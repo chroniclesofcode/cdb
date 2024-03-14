@@ -2,5 +2,6 @@
 
 int main(void)
 {
-    cdb::printHello();
+    cdb::Database my_db;
+    my_db.run();
 }

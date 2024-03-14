@@ -15,7 +15,7 @@ include_directories( ${Boost_INCLUDE_DIR} )
 
 add_subdirectory( include )
 
-set(DB_SOURCE_FILES src/cdb/Database.cpp)
+set(DB_SOURCE_FILES src/cdb/Database.cpp src/cdb/Engine.cpp src/cdb/Table.cpp)
 set(SOURCE_FILES src/main.cpp)
 
 add_executable(main ${SOURCE_FILES} ${DB_SOURCE_FILES})
