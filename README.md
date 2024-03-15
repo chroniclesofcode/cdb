@@ -16,6 +16,7 @@ Column-based in-memory time series database. Built in C++ from scratch.
 
 - add complex multithreaded capabilities (TBD)
 - add in query language
+- compression -> serialisation/deserialisation of data for performance?
 
 # PLANNING (do not read)
 

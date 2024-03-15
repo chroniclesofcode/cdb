@@ -16,13 +16,11 @@ int32_t Engine::getTableEntry(std::string name, std::string key)
 
 bool Engine::tableExists(std::string name)
 {
-    /*
     if (tables.find(name) == tables.end())
     {
         std::cout << "Table does not exist" << std::endl;
         return false;
     }
-    */
     return true;
 }
 
