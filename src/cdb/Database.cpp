@@ -18,6 +18,10 @@ void cdb::Database::run()
             {
                 engine.addTableEntry(table, key, value);
             }
+            else
+            {
+                std::cout << "Table does not exist!" << std::endl;
+            }
             break;
         case Opcode::GetEntry:
             std::cin >> table >> key;
@@ -25,7 +29,28 @@ void cdb::Database::run()
             {
                 std::cout << "value: " << engine.getTableEntry(table, key) << std::endl;
             }
+            else
+            {
+                std::cout << "Table does not exist!" << std::endl;
+            }
             break;
+        case Opcode::CreateTable:
+            std::cin >> table;
+            if (engine.tableExists(table))
+            {
+                std::cout << "Table already exists!" << std::endl;
+            }
+            else
+            {
+                engine.createTable(table);
+            }
+            break;
+        case Opcode::DeleteTable:
+            std::cin >> table;
+            if (engine.tableExists(table))
+            {
+                engine.deleteTable(table);
+            }
         default:
             break;
         }

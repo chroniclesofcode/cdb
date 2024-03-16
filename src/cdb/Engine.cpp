@@ -14,11 +14,20 @@ int32_t Engine::getTableEntry(std::string name, std::string key)
     return tables[name].getEntry(key);
 }
 
+void Engine::createTable(std::string name)
+{
+    tables[name] = Table();
+}
+
+void Engine::deleteTable(std::string name)
+{
+    tables.erase(name);
+}
+
 bool Engine::tableExists(std::string name)
 {
     if (tables.find(name) == tables.end())
     {
-        std::cout << "Table does not exist" << std::endl;
         return false;
     }
     return true;
