@@ -1,8 +1,8 @@
 #pragma once
-#include <unordered_map>
 #include <string>
 #include <ostream>
 #include "Table.hpp"
+#include "chronicode/hashmap.hpp"
 
 namespace cdb
 {
@@ -13,7 +13,7 @@ public:
 
     void addTableEntry(std::string name, std::string key, Value value);    
 
-    int32_t getTableEntry(std::string name, std::string key);
+    Value getTableEntry(std::string name, std::string key);
 
     void createTable(std::string name);
 
@@ -24,7 +24,7 @@ public:
     bool tableExists(std::string name);
 
 private:
-    std::unordered_map<std::string, Table> tables;
+    chronicode::hashmap<std::string, Table> tables;
 };
 
 }

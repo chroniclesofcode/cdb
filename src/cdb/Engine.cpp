@@ -6,17 +6,17 @@ namespace cdb
 
 void Engine::addTableEntry(std::string name, std::string key, Value value)
 {
-    tables[name].addEntry(key, value);
+    tables.get(name).addEntry(key, value);
 }
 
-int32_t Engine::getTableEntry(std::string name, std::string key)
+Value Engine::getTableEntry(std::string name, std::string key)
 {
-    return tables[name].getEntry(key);
+    return tables.get(name).getEntry(key);
 }
 
 void Engine::createTable(std::string name)
 {
-    tables[name] = Table({"sym", "price", "size"}, {"string", "int", "int"});
+    tables.set(name, Table({"sym", "price", "size"}, {"string", "int", "int"}));
 }
 
 void Engine::deleteTable(std::string name)
@@ -26,12 +26,12 @@ void Engine::deleteTable(std::string name)
 
 void Engine::printTable(std::string name, std::ostream &os)
 {
-    tables[name].printTable(os);
+    tables.get(name).printTable(os);
 }
 
 bool Engine::tableExists(std::string name)
 {
-    return tables.find(name) != tables.end();
+    return tables.exists(name);
 }
 
 }

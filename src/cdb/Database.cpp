@@ -13,7 +13,8 @@ void cdb::Database::run()
         switch (cmd)
         {
         case Opcode::AddEntry:
-            std::cin >> table >> key >> value;
+            // Obtain data types and insert
+            //std::cin >> table >> key >> value;
             if (engine.tableExists(table))
             {
                 engine.addTableEntry(table, key, value);
@@ -27,7 +28,7 @@ void cdb::Database::run()
             std::cin >> table >> key;
             if (engine.tableExists(table))
             {
-                std::cout << "value: " << engine.getTableEntry(table, key) << std::endl;
+                // std::cout << "value: " << engine.getTableEntry(table, key) << std::endl;
             }
             else
             {

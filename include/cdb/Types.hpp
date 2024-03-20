@@ -1,8 +1,9 @@
 #pragma once
+#include <variant>
 
 namespace cdb
 {
 
-    using Value = int64_t;
+    using Value = std::variant<int, double, std::string*, int64_t>;
 
 }

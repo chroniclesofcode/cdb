@@ -4,6 +4,9 @@ Column-based in-memory time series database. Built in C++ from scratch.
 
 # TO-DO
 
+- functionality to dynamically read the column types of a table and take that as input. Currently it's string,int,int
+- get rid of key-value pair dynamics (since we are not a kv db)
+
 - persist the data using shared memory
 - add generic table types -> generic data types
 - add networking to receive commands
@@ -11,6 +14,8 @@ Column-based in-memory time series database. Built in C++ from scratch.
 - benchmark performance against other DBs
 
 # DONE
+
+- abstract away maps into hashmap
 
 # STRETCH GOALS
 
