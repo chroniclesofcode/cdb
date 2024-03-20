@@ -4,9 +4,9 @@ void cdb::Database::run()
 {
     while (1)
     {
-        int opc;
+        std::string opc;
         std::cin >> opc;
-        Opcode cmd = static_cast<Opcode>(opc);
+        Opcode cmd = string_to_opcode(std::move(opc));
 
         std::string table, key;
         int32_t value;
@@ -51,7 +51,9 @@ void cdb::Database::run()
             {
                 engine.deleteTable(table);
             }
+            break;
         default:
+            std::cout << "Command does not exist." << std::endl;
             break;
         }
     }

@@ -32,3 +32,8 @@ DB will be a glorified parser:
 It will contain: networking object which will return the commands, a parser object
 which will parse the data then send the instructions off to the engine which
 will send it off to the tables, which will do the queries?
+
+Difficulties:
+- Variant data types: store void*? Then we can't do optimizations later on with simd?
+- std::string on my machine is 32 bytes, don't really want to std::variant with 4 byte ints
+- decided to flyweight pattern: string intern all strings into an integer.

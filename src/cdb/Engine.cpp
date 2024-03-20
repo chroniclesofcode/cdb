@@ -16,7 +16,7 @@ int32_t Engine::getTableEntry(std::string name, std::string key)
 
 void Engine::createTable(std::string name)
 {
-    tables[name] = Table();
+    tables[name] = Table({"sym", "price", "size"}, {"string", "int", "int"});
 }
 
 void Engine::deleteTable(std::string name)
@@ -26,11 +26,7 @@ void Engine::deleteTable(std::string name)
 
 bool Engine::tableExists(std::string name)
 {
-    if (tables.find(name) == tables.end())
-    {
-        return false;
-    }
-    return true;
+    return tables.find(name) != tables.end();
 }
 
 }
