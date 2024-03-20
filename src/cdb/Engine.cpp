@@ -4,7 +4,7 @@
 namespace cdb 
 {
 
-void Engine::addTableEntry(std::string name, std::string key, int32_t value)
+void Engine::addTableEntry(std::string name, std::string key, Value value)
 {
     tables[name].addEntry(key, value);
 }
@@ -22,6 +22,11 @@ void Engine::createTable(std::string name)
 void Engine::deleteTable(std::string name)
 {
     tables.erase(name);
+}
+
+void Engine::printTable(std::string name, std::ostream &os)
+{
+    tables[name].printTable(os);
 }
 
 bool Engine::tableExists(std::string name)

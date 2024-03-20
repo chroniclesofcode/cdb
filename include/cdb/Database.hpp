@@ -3,6 +3,7 @@
 #include <string>
 #include <unordered_map>
 #include "Opcode.hpp"
+#include "Types.hpp"
 #include "Engine.hpp"
 
 namespace cdb 

@@ -4,15 +4,42 @@ namespace cdb
 {
     Table::Table() : Table::Table({"sym", "price", "size"}, {"string", "int", "int"}) {}
 
-    Table::Table(std::vector<std::string> _columns, std::vector<std::string> _dtypes) : columns{std::move(_columns)}, dtypes{std::move(_dtypes)} {}
-
-    void Table::addEntry(std::string key, int32_t value)
+    Table::Table(std::vector<std::string> _names, std::vector<std::string> _dtypes) : names{std::move(_names)}, dtypes{std::move(_dtypes)}
     {
-        data[key] = value;
+        for (size_t i = 0; i < dtypes.size(); i++) 
+        {
+            if (dtypes[i] == "int")
+            {
+                data.push_back(IntCol());
+            }
+            else if (dtypes[i] == "string")
+            {
+                data.push_back(StringCol());
+            }
+            else if (dtypes[i] == "long")
+            {
+                data.push_back(LongCol());
+            }
+            else if (dtypes[i] == "double")
+            {
+                data.push_back(DoubleCol());
+            }
+        }
     }
 
-    int32_t Table::getEntry(std::string key)
+    void Table::addEntry(std::string key, Value value)
     {
-        return data[key];
+        // data[key] = value;
+    }
+
+    Value Table::getEntry(std::string key)
+    {
+        // return data[key];
+        return 0;
+    }
+
+    void Table::printTable(std::ostream &os)
+    {
+        os << "Hello world!\n";
     }
 }

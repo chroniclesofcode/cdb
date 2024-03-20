@@ -9,7 +9,7 @@ void cdb::Database::run()
         Opcode cmd = string_to_opcode(std::move(opc));
 
         std::string table, key;
-        int32_t value;
+        Value value;
         switch (cmd)
         {
         case Opcode::AddEntry:
@@ -50,6 +50,17 @@ void cdb::Database::run()
             if (engine.tableExists(table))
             {
                 engine.deleteTable(table);
+            }
+            break;
+        case Opcode::PrintTable:
+            std::cin >> table;
+            if (engine.tableExists(table))
+            {
+                engine.printTable(table, std::cout);
+            }
+            else
+            {
+                std::cout << "Table does not exist!" << std::endl;
             }
             break;
         default:
