@@ -14,11 +14,11 @@ class Table
 {
 private:
     using IntCol = std::vector<int>;
-    using DoubleCol = std::vector<double>;
-    using StringCol = std::vector<std::string*>;
+    using DecimalCol = std::vector<double>;
+    using StringCol = std::vector<const std::string*>;
     using LongCol = std::vector<int64_t>;
 
-    using ColumnVar = std::variant<IntCol, DoubleCol, StringCol, LongCol>;
+    using ColumnVar = std::variant<IntCol, DecimalCol, StringCol, LongCol>;
 public:
 
     Table();
@@ -32,6 +32,9 @@ public:
     void printTable(std::ostream &os);
 
 private:
+    void printRow(std::ostream &os, size_t i);
+
+    size_t num_entries;
     std::vector<std::string> names;
     std::vector<DataType> dtypes;
     std::vector<ColumnVar> data;
