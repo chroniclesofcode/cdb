@@ -13,6 +13,8 @@ class Database
 public:
     void run();
 private:
+    inline std::vector<Value> createRow(std::string name);
+
     Engine engine;
 };
 

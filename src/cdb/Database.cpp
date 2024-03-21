@@ -1,6 +1,53 @@
 #include "cdb/Database.hpp"
 
-void cdb::Database::run()
+namespace cdb
+{
+
+inline std::vector<Value> Database::createRow(std::string name)
+{
+    auto& dtypes = engine.getDTypes(name);
+    std::vector<Value> row;
+    for (DataType d : dtypes)
+    {
+        switch (d)
+        {
+            case DataType::IntType:
+            {
+                int eInt; 
+                std::cin >> eInt;
+                row.push_back(eInt);
+                break;
+            }
+            case DataType::StringRef:
+            {
+                std::string eStr; 
+                std::cin >> eStr;
+                row.push_back(engine.internString(std::move(eStr)));
+                break;
+            }
+            case DataType::LongType:
+            {
+                int64_t eLong;
+                std::cin >> eLong;
+                row.push_back(eLong);
+                break;
+            }
+            case DataType::DecimalType:
+            {
+                double eDouble;
+                std::cin >> eDouble;
+                row.push_back(eDouble);
+                break;
+            }
+            default:
+                row.push_back(0);
+                break;
+        }
+    }
+    return row;
+}
+
+void Database::run()
 {
     while (1)
     {
@@ -14,21 +61,10 @@ void cdb::Database::run()
         {
         case Opcode::AddEntry:
             // Obtain data types and insert
-            //std::cin >> table >> key >> value;
+            std::cin >> table;
             if (engine.tableExists(table))
             {
-                engine.addTableEntry(table, key, value);
-            }
-            else
-            {
-                std::cout << "Table does not exist!" << std::endl;
-            }
-            break;
-        case Opcode::GetEntry:
-            std::cin >> table >> key;
-            if (engine.tableExists(table))
-            {
-                // std::cout << "value: " << engine.getTableEntry(table, key) << std::endl;
+                engine.addTableEntry(std::move(table), createRow(std::move(table)));
             }
             else
             {
@@ -69,4 +105,6 @@ void cdb::Database::run()
             break;
         }
     }
+}
+
 }

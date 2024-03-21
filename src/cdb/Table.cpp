@@ -4,38 +4,41 @@ namespace cdb
 {
     Table::Table() : Table::Table({"sym", "price", "size"}, {"string", "int", "int"}) {}
 
-    Table::Table(std::vector<std::string> _names, std::vector<std::string> _dtypes) : names{std::move(_names)}, dtypes{std::move(_dtypes)}
+    Table::Table(std::vector<std::string> _names, std::vector<std::string> types) : names{std::move(_names)}
     {
-        for (size_t i = 0; i < dtypes.size(); i++) 
+        for (size_t i = 0; i < types.size(); i++) 
         {
-            if (dtypes[i] == "int")
+            if (types[i] == "int")
             {
                 data.push_back(IntCol());
+                dtypes.push_back(DataType::IntType);
             }
-            else if (dtypes[i] == "string")
+            else if (types[i] == "string")
             {
                 data.push_back(StringCol());
+                dtypes.push_back(DataType::StringRef);
             }
-            else if (dtypes[i] == "long")
+            else if (types[i] == "long")
             {
                 data.push_back(LongCol());
+                dtypes.push_back(DataType::LongType);
             }
-            else if (dtypes[i] == "double")
+            else if (types[i] == "double")
             {
                 data.push_back(DoubleCol());
+                dtypes.push_back(DataType::DecimalType);
             }
         }
     }
 
-    void Table::addEntry(std::string key, Value value)
+    void Table::addEntry(std::vector<Value> row)
     {
-        // data[key] = value;
+        std::cout << "Adding!" << std::endl;
     }
 
-    Value Table::getEntry(std::string key)
+    std::vector<DataType>& Table::getDTypes(void)
     {
-        // return data[key];
-        return 0;
+        return dtypes;
     }
 
     void Table::printTable(std::ostream &os)

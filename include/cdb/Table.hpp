@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <variant>
+#include <iostream>
 #include <ostream>
 #include "Types.hpp"
 
@@ -22,17 +23,17 @@ public:
 
     Table();
 
-    Table(std::vector<std::string> _names, std::vector<std::string> _dtypes);
+    Table(std::vector<std::string> _names, std::vector<std::string> types);
     
-    void addEntry(std::string key, Value value);
+    void addEntry(std::vector<Value> row);
 
-    Value getEntry(std::string key);
+    std::vector<DataType>& getDTypes(void);
 
     void printTable(std::ostream &os);
 
 private:
     std::vector<std::string> names;
-    std::vector<std::string> dtypes;
+    std::vector<DataType> dtypes;
     std::vector<ColumnVar> data;
 };
 

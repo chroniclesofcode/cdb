@@ -5,7 +5,7 @@ namespace chronicode
 {
 
 template<typename Key, typename Val>
-class hashmap
+class Hashmap
 {
 public:
     Val& get(Key k)
@@ -25,7 +25,7 @@ public:
 
     inline bool exists(Key k)
     {
-        return data.find(k) == data.end();
+        return data.find(k) != data.end();
     }
 private:
     std::unordered_map<Key, Val> data;
