@@ -29,7 +29,7 @@ bool Engine::tableExists(std::string name)
     return tables.exists(name);
 }
 
-const std::string* Engine::internString(std::string str)
+StringID Engine::internString(std::string str)
 {
     return s_pool.intern(std::move(str));
 }

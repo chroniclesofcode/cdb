@@ -22,7 +22,7 @@ public:
 
     bool tableExists(std::string name);
 
-    const std::string* internString(std::string str);
+    StringID internString(std::string str);
 
     std::vector<DataType>& getDTypes(std::string name);
 

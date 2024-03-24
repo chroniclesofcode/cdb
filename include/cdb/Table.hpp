@@ -15,7 +15,7 @@ class Table
 private:
     using IntCol = std::vector<int>;
     using DecimalCol = std::vector<double>;
-    using StringCol = std::vector<const std::string*>;
+    using StringCol = std::vector<StringID>;
     using LongCol = std::vector<int64_t>;
 
     using ColumnVar = std::variant<IntCol, DecimalCol, StringCol, LongCol>;

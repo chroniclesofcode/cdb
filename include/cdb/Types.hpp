@@ -3,8 +3,8 @@
 
 namespace cdb
 {
-
-    using Value = std::variant<int, double, const std::string*, int64_t>;
+    using StringID = const std::string*;
+    using Value = std::variant<int, double, StringID, int64_t>;
 
     enum class DataType
     {
