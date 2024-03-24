@@ -68,7 +68,7 @@ namespace cdb
         {
             os << name << ' ';
         }
-        os << '\n';
+        os << '\n' << '\n';
         for (size_t i = 0; i < num_entries; i++)
         {
             printRow(os, i);
