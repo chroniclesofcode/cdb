@@ -5,7 +5,6 @@ Column-based in-memory time series database. Built in C++ from scratch.
 # TO-DO
 
 - research storage capabilities
-- functionality to dynamically read the column types of a table and take that as input. Currently it's string,int,int
 - get rid of key-value pair dynamics (since we are not a kv db)
 
 - persist/read the data using shared memory
@@ -20,6 +19,7 @@ Column-based in-memory time series database. Built in C++ from scratch.
 - abstract away maps into hashmap
 - functionality to dynamically read the column types of a table and take that as input.
 - naively print table
+- functionality to dynamically read the column types of a table and take that as input. Currently it's string,int,int
 
 # STRETCH GOALS
 
@@ -52,3 +52,4 @@ Difficulties:
 - Variant data types: store void*? Then we can't do optimizations later on with simd?
 - std::string on my machine is 32 bytes, don't really want to std::variant with 4 byte ints
 - decided to flyweight pattern: string intern all strings into an integer.
+- dynamically reading types -> each table has a vector of enums of types, which we can use to std::cin

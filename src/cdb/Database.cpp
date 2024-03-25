@@ -47,7 +47,7 @@ inline std::vector<Value> Database::createRow(std::string name)
     return row;
 }
 
-void Database::run()
+void Database::run(void)
 {
     while (1)
     {
@@ -100,11 +100,19 @@ void Database::run()
                 std::cout << "Table does not exist!" << std::endl;
             }
             break;
+        case Opcode::QuitCommand:
+            exitDB();
+            break;
         default:
             std::cout << "Command does not exist." << std::endl;
             break;
         }
     }
+}
+
+void Database::exitDB(void)
+{
+    exit(0);
 }
 
 }

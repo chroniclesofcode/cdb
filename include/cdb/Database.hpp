@@ -11,7 +11,8 @@ namespace cdb
 class Database
 {
 public:
-    void run();
+    void run(void);
+    void exitDB(void);
 private:
     inline std::vector<Value> createRow(std::string name);
 
